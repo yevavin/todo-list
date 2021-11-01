@@ -1,0 +1,360 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+.theme-switcher {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+}
+
+.theme-switcher:hover {
+  cursor: pointer;
+}
+
+.dark .theme-switcher {
+  background-image: url(../images/icon-sun.svg);
+}
+
+.light .theme-switcher {
+  background-image: url(../images/icon-moon.svg);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper .input {
+  width: 100%;
+  height: 60px;
+  padding: 15px 35px 15px 45px;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper .input[value=""] + div {
+  pointer-events: none;
+}
+
+.input-wrapper .button {
+  position: absolute;
+  left: 15px;
+  top: 18px;
+  border: 1px solid #d2d3db;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.input-wrapper .button:hover {
+  cursor: pointer;
+}
+
+.light .input-wrapper .input {
+  border-bottom: 1px solid #d2d3db;
+  background-color: white;
+  color: #484b6a;
+}
+
+.light .input-wrapper .input::placeholder {
+  color: #484b6a;
+}
+
+.dark .input-wrapper .input {
+  border-bottom: 1px solid #4d5066;
+  background-color: #393a4c;
+  color: #cacde8;
+}
+
+.dark .input-wrapper .input::placeholder {
+  color: #777a92;
+}
+
+.todo-list {
+  margin-top: -25px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.todo-list__item {
+  width: 100%;
+  height: 60px;
+  padding: 15px 35px 15px 45px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.todo-list__item.hidden {
+  display: none;
+}
+
+.todo-list__item-label {
+  cursor: pointer;
+}
+
+.todo-list__item-label_checked {
+  text-decoration-line: line-through;
+  text-decoration-thickness: 0.5px;
+}
+
+.todo-list__item-checkbox {
+  position: absolute;
+  left: 20px;
+  top: 35%;
+  visibility: hidden;
+}
+
+.todo-list__item-checkbox::after, .todo-list__item-checkbox::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d2d3db;
+  border-radius: 100%;
+  position: absolute;
+  left: -5px;
+  top: -1px;
+  display: block;
+  visibility: visible;
+  transition: all .2s;
+}
+
+.todo-list__item-checkbox:hover::after {
+  cursor: pointer;
+  border-color: #c058f3;
+}
+
+.todo-list__item-checkbox:checked::before {
+  background: linear-gradient(-45deg, #c058f3, #57ddff);
+}
+
+.todo-list__item-checkbox:checked::after {
+  background-image: url(../images/icon-check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+
+.todo-list__item-btn {
+  background-image: url(../images/icon-cross.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  right: 20px;
+  top: 35%;
+}
+
+.todo-list__item-btn:hover {
+  cursor: pointer;
+}
+
+.light .todo-list {
+  box-shadow: 0px 15px 50px #e4e5f1;
+}
+
+.light .todo-list__item {
+  background-color: white;
+  color: #484b6a;
+  border-bottom: 1px solid #d2d3db;
+}
+
+.light .todo-list__item-label_checked {
+  text-decoration-color: #9394a5;
+  color: #d2d3db;
+}
+
+.dark .todo-list {
+  box-shadow: 0px 15px 50px #161722;
+}
+
+.dark .todo-list__item {
+  background-color: #393a4c;
+  color: #cacde8;
+  border-bottom: 1px solid #777a92;
+}
+
+.dark .todo-list__item-btn {
+  filter: invert(0.6);
+}
+
+.dark .todo-list__item-label_checked {
+  text-decoration-color: #cacde8;
+  color: #777a92;
+}
+
+.todo-list__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  position: relative;
+}
+
+.todo-list__footer_hidden {
+  display: none;
+}
+
+.todo-list__footer-counter {
+  font-size: 15px;
+  color: #d2d3db;
+  flex: 1;
+}
+
+.todo-list__footer-btn {
+  font-size: 15px;
+  color: #d2d3db;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.todo-list__footer-btn-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.light .todo-list {
+  background-color: white;
+}
+
+.light .todo-list__footer-counter, .light .todo-list__footer-btn {
+  color: #9394a5;
+}
+
+.light .todo-list__footer-btn:hover {
+  color: #484b6a;
+  transition: .2s ease;
+}
+
+.dark .todo-list {
+  background-color: #393a4c;
+}
+
+.dark .todo-list__footer-counter, .dark .todo-list__footer-btn {
+  color: #777a92;
+}
+
+.dark .todo-list__footer-btn:hover {
+  color: #e4e5f1;
+  transition: .2s ease;
+}
+
+.state-list {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 0;
+}
+
+.state-list h2 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 20px;
+  transition: all .2s ease;
+}
+
+.state-list h2.active {
+  color: #3a7bfd;
+}
+
+.state-list h2:first-child {
+  margin-left: 0;
+}
+
+.state-list h2:hover {
+  cursor: pointer;
+}
+
+.light .state-list {
+  color: #9394a5;
+  background-color: white;
+}
+
+.light .state-list h2:not(.active):hover {
+  color: #484b6a;
+}
+
+.dark .state-list {
+  color: #777a92;
+  background-color: #393a4c;
+}
+
+.dark .state-list h2:not(.active):hover {
+  color: #e4e5f1;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 720px) {
+  .state-list {
+    position: static;
+    max-width: 40%;
+    padding: 0;
+  }
+  .state-list h2 {
+    font-size: 15px;
+  }
+}
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.light {
+  background-color: #fafafa;
+}
+
+.light .header {
+  background-image: url(../images/bg-desktop-light.jpg);
+}
+
+.dark {
+  background-color: #25273c;
+}
+
+.dark .header {
+  background-image: url(../images/bg-desktop-dark.jpg);
+}
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+}
+
+.container {
+  width: 80%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  height: 30vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header__title {
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__title h1 {
+  font-size: 32px;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 16px;
+}

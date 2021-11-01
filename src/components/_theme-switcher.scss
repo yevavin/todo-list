@@ -1,0 +1,21 @@
+.theme-switcher {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 30px;
+  width: 30px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dark {
+  .theme-switcher {
+    background-image: url(../images/icon-sun.svg);
+  }
+}
+
+.light {
+  .theme-switcher {
+    background-image: url(../images/icon-moon.svg);
+  }
+}

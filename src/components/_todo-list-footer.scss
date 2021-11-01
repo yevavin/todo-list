@@ -1,0 +1,126 @@
+.todo-list {
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+
+    &_hidden {
+      display: none;
+    }
+
+    &-counter {
+      font-size: 15px;
+      color: $lt-light-grayish-blue;
+      flex: 1;
+    }
+
+    &-btn {
+      font-size: 15px;
+      color: $lt-light-grayish-blue;
+      cursor: pointer;
+      transition: .2s ease;
+      &-wrapper {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+  
+      }
+    }
+  }
+}
+
+.light {
+  .todo-list {
+    background-color: white;
+    &__footer-counter, &__footer-btn {
+      color: $lt-dark-grayish-blue;
+    }
+    &__footer-btn:hover {
+      color: $lt-very-dark-grayish-blue;
+      transition: .2s ease;
+    }
+  }
+}
+
+.dark {
+  .todo-list {
+    background-color: $dt-very-dark-grayish-blue-2;
+    &__footer-counter, &__footer-btn {
+      color: $dt-dark-grayish-blue;
+    }
+    &__footer-btn:hover {
+      color: $dt-light-grayish-blue-hover;
+      transition: .2s ease;
+    }
+  }
+}
+
+//------------ Tabs
+
+.state-list {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  left: 0;
+
+  h2 {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 20px;
+    transition: all .2s ease;
+    &.active {
+      color: $bright-blue;
+    }
+  }
+
+  h2:first-child {
+    margin-left: 0;
+  }
+
+  h2:hover {
+    cursor: pointer;
+  }
+}
+
+.light {
+  .state-list {
+    color: $lt-dark-grayish-blue;
+    background-color: white;
+    h2:not(.active):hover {
+      color: $lt-very-dark-grayish-blue;
+    }
+  }
+}
+
+.dark {
+  .state-list {
+    color: $dt-dark-grayish-blue;
+    background-color: $dt-very-dark-grayish-blue-2;
+    h2:not(.active):hover {
+      color: $dt-light-grayish-blue-hover;
+    }
+  }
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 720px) {
+  .state-list {
+    position: static;
+    max-width: 40%;
+    padding: 0;
+    h2 {
+      font-size: 15px;
+
+    }
+  } 
+}
+
