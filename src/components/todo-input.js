@@ -1,4 +1,3 @@
-import todos from "../models/todos.js";
 import todoList from "./todo-list.js";
 
 const todoInput = document.querySelector('#newTodo');
@@ -8,8 +7,7 @@ todoInput.addEventListener('input', (e) => {
 
 const todoInputBtn = document.querySelector('#newTodoBtn');
 todoInputBtn.addEventListener('click', () => {
-  todos.addTodo(todoInput.value)
-  todoList.dispatchEvent(new Event('update'))
+  todoList.addItem(todoInput.value)
   todoInput.setAttribute('value', '')
   todoInput.value = ''
 });

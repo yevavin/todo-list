@@ -256,23 +256,30 @@
   left: 0;
 }
 
-.state-list h2 {
+.state-list button {
+  border: none;
+  background: none;
+  color: inherit;
   font-weight: 700;
   font-size: 18px;
   margin-left: 20px;
   transition: all .2s ease;
 }
 
-.state-list h2.active {
+.state-list button.active {
   color: #3a7bfd;
 }
 
-.state-list h2:first-child {
+.state-list button:first-child {
   margin-left: 0;
 }
 
-.state-list h2:hover {
+.state-list button:hover:not(:disabled) {
   cursor: pointer;
+}
+
+.state-list button:disabled {
+  opacity: 0.4;
 }
 
 .light .state-list {
@@ -280,7 +287,7 @@
   background-color: white;
 }
 
-.light .state-list h2:not(.active):hover {
+.light .state-list button:not(.active):hover:not(:disabled) {
   color: #484b6a;
 }
 
@@ -289,7 +296,7 @@
   background-color: #393a4c;
 }
 
-.dark .state-list h2:not(.active):hover {
+.dark .state-list button:not(.active):hover:not(:disabled) {
   color: #e4e5f1;
 }
 
@@ -300,7 +307,7 @@
     max-width: 40%;
     padding: 0;
   }
-  .state-list h2 {
+  .state-list button {
     font-size: 15px;
   }
 }

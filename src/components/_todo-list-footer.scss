@@ -71,22 +71,30 @@
   top: 70px;
   left: 0;
 
-  h2 {
+  button {
+    border: none;
+    background: none;
+    color: inherit;
     font-weight: 700;
     font-size: 18px;
     margin-left: 20px;
     transition: all .2s ease;
+
     &.active {
       color: $bright-blue;
     }
-  }
 
-  h2:first-child {
-    margin-left: 0;
-  }
+    &:first-child {
+      margin-left: 0;
+    }
 
-  h2:hover {
-    cursor: pointer;
+    &:hover:not(:disabled) {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+    }
   }
 }
 
@@ -94,7 +102,7 @@
   .state-list {
     color: $lt-dark-grayish-blue;
     background-color: white;
-    h2:not(.active):hover {
+    button:not(.active):hover:not(:disabled) {
       color: $lt-very-dark-grayish-blue;
     }
   }
@@ -104,7 +112,7 @@
   .state-list {
     color: $dt-dark-grayish-blue;
     background-color: $dt-very-dark-grayish-blue-2;
-    h2:not(.active):hover {
+    button:not(.active):hover:not(:disabled) {
       color: $dt-light-grayish-blue-hover;
     }
   }
@@ -117,9 +125,8 @@
     position: static;
     max-width: 40%;
     padding: 0;
-    h2 {
+    button {
       font-size: 15px;
-
     }
   } 
 }

@@ -7,6 +7,7 @@ const todoList = document.querySelector('#todoList');
 todoList.addEventListener('update', () => {
   todoList.render()
   todoListCounter.update();
+  todoListFooter.stateUpdate();
 });
 
 todoList.applyFilter = () => {
@@ -75,6 +76,11 @@ const todoItemTemplate = `
     todoListFooter.render();
   };
   
+  todoList.addItem = (item) => {
+    todos.addTodo(item)
+    todoList.dispatchEvent(new Event('update'))
+  }
+
   function removeItem(e) {
     const id = e.target.parentElement.id;
     todos.removeTodo(id);
