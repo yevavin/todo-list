@@ -2,8 +2,8 @@ window.addEventListener('load', async () => {
   if (navigator.serviceWorker) {
     try {
       const reg = await navigator.serviceWorker.register('/sw.js')
-    } catch {
-      console.log ('error')
+    } catch (e) {
+      console.log ('error:', e)
     }   
   }
 })
