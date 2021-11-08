@@ -4,7 +4,9 @@ import todoListFooter from './todo-list-footer.js';
 import { getStateValue } from '../models/state.js';
 
 const todoList = document.querySelector('#todoList');
+
 todoList.addEventListener('update', () => {
+  todoList.checkContent();
   todoList.render()
   todoListCounter.update();
   todoListFooter.stateUpdate();
@@ -94,6 +96,16 @@ function compliteItem(e) {
   todoList.dispatchEvent(new Event('update'));
 };
 
+todoList.checkContent = () => {
+  const labelForEmptyList = document.querySelector('#labelForEmptyList')
+  if(todos.length == 0) {
+    labelForEmptyList.classList.remove('hidden');
+  } else {
+    labelForEmptyList.classList.add('hidden');
+  }
+}
+
+todoList.checkContent();
 todoList.render();
 
 export default todoList;
