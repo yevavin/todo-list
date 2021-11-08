@@ -1,18 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
-@import './_variables.scss';
-@import '../components/_theme-switcher.scss';
-@import '../components/_todo-input.scss';
-@import '../components/_todo-list.scss';
-@import '../components/_todo-list-footer.scss';
+@import "./_variables.scss";
+@import "../components/_theme-switcher.scss";
+@import "../components/_todo-input.scss";
+@import "../components/_todo-list.scss";
+@import "../components/_todo-list-footer.scss";
 
-
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 
 .light {
   background-color: $lt-very-light-gray;
@@ -28,8 +28,8 @@
   }
 }
 
-body{
-  font-family: 'Josefin Sans', sans-serif;
+body {
+  font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
 }
 
@@ -41,22 +41,49 @@ body{
 
 .header {
   width: 100%;
-  height: 30vh;
+  height: 200px;
   background-size: cover;
   background-repeat: no-repeat;
 
   &__title {
-    padding: 40px 0;
+    padding: 48px 0 40px 0;
     display: flex;
     justify-content: space-between;
 
     h1 {
-      font-size: 32px;
-      font-weight: normal;
+      font-size: 21px;
+      font-weight: bold;
       color: white;
       text-transform: uppercase;
-      letter-spacing: 16px;
+      letter-spacing: 12px;
     }
   }
 }
 
+#labelForEmptyList {
+  font-size: 24px;
+  color: $dt-dark-grayish-blue;
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  
+  &.hidden {
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 426px) {
+  .header {
+    height: 298px;
+
+    &__title {
+      padding: 78px 0 50px 0;
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+  }
+}
