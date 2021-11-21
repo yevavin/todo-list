@@ -17,7 +17,11 @@
     <div class="container">
       <div class="header__title">
         <h1>Todo</h1>
-        <div id="themeSwitcher" class="theme-switcher"></div>
+        <div class="header__title_control">
+          <div id="themeSwitcher" class="theme-switcher"></div>
+          <ion-icon class="auth" id="login" name="log-in-outline"></ion-icon>
+          <ion-icon class="auth _hidden" id="logout" name="log-out-outline"></ion-icon>
+        </div>
       </div>
       <div class="input-wrapper">
         <input class="input" value="" type="text" id="newTodo" placeholder="Create a new todo...">
@@ -43,6 +47,45 @@
 
     <div id="labelForEmptyList">Add your first todo</div>
   </div>
+
+  <div class="popup-wrapper hidden">
+    <div class="popup hidden" id="signIn">
+      <ion-icon class="close-btn" name="close-outline"></ion-icon>
+      <div class="popup__title">
+        <h2>Sign in</h2>
+      </div>
+      <div class="popup__content">
+        <button class="btn" id="signInWithGoogle">
+          <ion-icon name="logo-google"></ion-icon>
+          <span>Sign in with Google</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="popup hidden" id="signOut">
+      <ion-icon class="close-btn" name="close-outline"></ion-icon>
+      <div class="popup__title">
+        <h2>Do you want to leave?</h2>
+      </div>
+      <div class="popup__content">
+        <button class="btn" id="signOutWithGoogle">
+          <ion-icon name="logo-google"></ion-icon>
+          <span>Sign out</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  
+  <!-- Firebase -->
+  
+  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script> -->
 
   <script type="module" src="main.js"></script>
 </body>
