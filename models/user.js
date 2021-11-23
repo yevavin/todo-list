@@ -30,7 +30,8 @@ Object.onPropertySet = function onPropertySet(obj, prop, ...callback_or_once){
 };
 
 const userStore = {
-  user: null
+  user: null,
+  process: true
 }
 
 export default userStore
