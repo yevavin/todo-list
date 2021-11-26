@@ -2,6 +2,7 @@ import todos from '../models/todos.js'
 import todoListCounter from './todo-counter.js';
 import todoListFooter from './todo-list-footer.js';
 import { getStateValue } from '../models/state.js';
+import getItem from './todo-list-item.js';
 
 const todoList = document.querySelector('#todoList');
 
@@ -29,22 +30,12 @@ todoList.applyFilter = () => {
   })
 }
 
-const todoItemTemplate = `
-  <div class="todo-list__item">
-  <label class="todo-list__item-label"></label>
-  <input type="checkbox" class="todo-list__item-checkbox"/>
-  <div class="todo-list__item-btn"></div>
-  </div>
-  `;
-
 todoList.render = function () {
-  let html = '';
+  todoList.getElementsByTagName('div')[0].innerHTML = ''
   todos.forEach(todo => {
-    const itemWrapper = document.createElement('div');
-    itemWrapper.innerHTML = todoItemTemplate;
-    const todoListItem = itemWrapper.querySelector('.todo-list__item');
-    const todoListItemLabel = itemWrapper.querySelector('label');
-    const todoListItemCheckbox = itemWrapper.querySelector('input[type=checkbox]');
+    const todoListItem = getItem();
+    const todoListItemLabel = todoListItem.querySelector('label');
+    const todoListItemCheckbox = todoListItem.querySelector('input[type=checkbox]');
     todoListItem.setAttribute('id', todo.id);
     switch (getStateValue()) {
       case 'all':
@@ -65,10 +56,9 @@ todoList.render = function () {
     todo.checked
       ? todoListItemLabel.classList.add('todo-list__item-label_checked')
       : todoListItemLabel.classList.remove('todo-list__item-label_checked');
-
-    html += itemWrapper.innerHTML;
+      todoList.getElementsByTagName('div')[0].append(todoListItem);
   });
-  todoList.getElementsByTagName('div')[0].innerHTML = html;
+ 
   todoList.querySelectorAll('.todo-list__item-btn').forEach((item) => {
     item.addEventListener('click', removeItem);
   });
