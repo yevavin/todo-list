@@ -1,68 +1,47 @@
+const todos = {}
+todos.data = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : {};
 
-let todos = localStorage.getItem('todos') ? JSON.parse(localStorage.getItem('todos')) : [];
-
-import userStore from "./user.js";
-
-const API_URL = 'https://todo-list-app-43909-default-rtdb.firebaseio.com/todos/';
-
-todos.load = async (path) => {
-  return fetch(
-    API_URL + path,
-    { method: 'GET' }
-  )
-    .then(response => response.json())
-    .then((data) => Object.values(data))
-    .then((data) => {
-      console.log(data)
-      todos.splice(0)
-      todos.push(...data)
-    })
-}
-
-todos.addTodo = (todo) => {
-  todos.push({
-    id: '_' + Date.now(),
-    value: todo,
+todos.addTodo = (todoValue) => {
+  const key = '_' + Date.now()
+  const data = {
+    value: todoValue,
     checked: false,
-  });
+    updatedTime: Date.now(),
+    deleted: false,
+  }
+  todos.data[key] = data;
   saveTodos();
+  return [key, data]
 }
 
 todos.removeTodo = (id) => {
-  for (let i = 0; i < todos.length; i++) {
-    if (todos[i].id == id) {
-      todos.splice(i, 1);
-      break;
-    }
-  }
+  const data = todos.data[id]
+  data.deleted = true
+  data.updatedTime = Date.now()
   saveTodos();
+
+  return [id, data]
 }
 
 todos.toggle = (id) => {
-  const item = todos.find(item => item.id == id);
-  item.checked = !item.checked;
+  const data = todos.data[id]
+  data.checked = !data.checked
+  data.updatedTime = Date.now()
   saveTodos();
+
+  return [id, data]
 }
 
 const saveTodos = () => {
-  localStorage.setItem('todos', JSON.stringify(todos));
+  todos.saveToLocalStorege()
 }
 
-todos.saveTodosToDatabase = (API_PATH) => {
-  let todosFromLocalStorage = JSON.parse(localStorage.getItem('todos'));
-  todosFromLocalStorage = todosFromLocalStorage.reduce(function (acc, item, index) {
-    acc[index] = item;
-    return acc;
+todos.saveToLocalStorege = () => {
+  const data = Object.entries(todos.data).reduce((accum, item) => {
+    accum[item[0]] = item[1]
+    return accum
   }, {})
-  try {
-    fetch(API_URL + API_PATH, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(todosFromLocalStorage)
-    });
-  } catch (ex) {
-    console.error('ex:', ex);
-  }
+  localStorage.setItem('todos', JSON.stringify(data))
 }
 
 export default todos;

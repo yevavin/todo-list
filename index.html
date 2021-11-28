@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="manifest" href="manifest.json">
-  
+  <!-- <link rel="manifest" href="manifest.json"> -->
+
   <title>Todo app</title>
-  
+
 </head>
+
 <body>
 
   <div class="header">
@@ -19,8 +22,8 @@
         <h1>Todo</h1>
         <div class="header__title_control">
           <div id="themeSwitcher" class="theme-switcher"></div>
-          <ion-icon class="auth" id="login" name="log-in-outline"></ion-icon>
-          <ion-icon class="auth _hidden" id="logout" name="log-out-outline"></ion-icon>
+          <img src="./images/log-in.svg" class="auth hidden" id="login" alt="log-in">
+          <img src="./images/log-out.svg" class="auth hidden" id="logout" alt="log-out">
         </div>
       </div>
       <div class="input-wrapper">
@@ -33,7 +36,7 @@
   <div class="container">
 
     <div class="todo-list" id="todoList">
-      <div></div> 
+      <div></div>
       <div class="todo-list__footer todo-list__footer_hidden">
         <div class="todo-list__footer-counter"></div>
         <div class="state-list">
@@ -41,7 +44,9 @@
           <button data-state="active">Active</button>
           <button data-state="completed">Completed</button>
         </div>
-        <div class="todo-list__footer-btn-wrapper"><div id="clearBtn" class="todo-list__footer-btn">Clear Complited</div></div>
+        <div class="todo-list__footer-btn-wrapper">
+          <div id="clearBtn" class="todo-list__footer-btn">Clear Complited</div>
+        </div>
       </div>
     </div>
 
@@ -50,20 +55,23 @@
 
   <div class="popup-wrapper hidden">
     <div class="popup hidden" id="signIn">
-      <ion-icon class="close-btn" name="close-outline"></ion-icon>
+      <img src="./images/x.svg" class="close-btn" alt="close">
       <div class="popup__title">
         <h2>Sign in</h2>
       </div>
       <div class="popup__content">
         <button class="btn" id="signInWithGoogle">
-          <ion-icon name="logo-google"></ion-icon>
-          <span>Sign in with Google</span>
+          <img src="./images/google.svg" alt="google-icon">
+          Sign in with Google
         </button>
+      </div>
+      <div class="popup__footer">
+        Sign in allows you to manage your todo on different devices
       </div>
     </div>
 
     <div class="popup hidden" id="signOut">
-      <ion-icon class="close-btn" name="close-outline"></ion-icon>
+      <img src="./images/x.svg" class="close-btn" alt="close">
       <div class="popup__title">
         <h2>Do you want to leave?</h2>
       </div>
@@ -76,12 +84,9 @@
     </div>
   </div>
 
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  
   <!-- Firebase -->
-  
-  <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script> -->
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
@@ -89,4 +94,5 @@
 
   <script type="module" src="main.js"></script>
 </body>
+
 </html>

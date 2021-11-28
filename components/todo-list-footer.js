@@ -5,7 +5,7 @@ import {getState, setState} from '../models/state.js'
 const todoListFooter = document.querySelector('#todoList .todo-list__footer');
 
 todoListFooter.render = function() {
-  todos.length 
+  Object.values(todos.data).length 
       ? todoListFooter.classList.remove('todo-list__footer_hidden') 
       : todoListFooter.classList.add('todo-list__footer_hidden');
 }
@@ -13,7 +13,7 @@ todoListFooter.render = function() {
 const clearBtn = todoListFooter.querySelector('#clearBtn');
 
 clearBtn.addEventListener('click', () => {
-  todos.filter(item => item.checked).forEach(item => todos.removeTodo(item.id));
+  todos.data.filter(item => item.checked).forEach(item => todos.removeTodo(item.id));
   todoList.dispatchEvent(new Event('update'));
 });
 
@@ -31,10 +31,10 @@ todoListFooter.stateUpdate = function() {
     state[key] ? tab.classList.add('active') : tab.classList.remove('active');
     switch(key) {
       case 'active':
-        todos.find(item => !item.checked) ? tab.removeAttribute('disabled') : tab.setAttribute('disabled', 'disabled')
+        Object.values(todos.data).find(item => !item.checked) ? tab.removeAttribute('disabled') : tab.setAttribute('disabled', 'disabled')
         break;
       case 'completed':
-        todos.find(item => item.checked) ? tab.removeAttribute('disabled') : tab.setAttribute('disabled', 'disabled')
+        Object.values(todos.data).find(item => item.checked) ? tab.removeAttribute('disabled') : tab.setAttribute('disabled', 'disabled')
         break;
     }
   })

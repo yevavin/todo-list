@@ -1,7 +1,6 @@
 import userStore from './models/user.js'
-import todos from './models/todos.js'
 import todoList from './components/todo-list.js';
-// import saveTodoToDB from './db.js';
+import api from './api.js'
 
 const signInWithGoogle = document.getElementById('signInWithGoogle');
 const signOutWithGoogle = document.getElementById('signOutWithGoogle');
@@ -12,7 +11,7 @@ signInWithGoogle.addEventListener('click', signIn);
 signOutWithGoogle.addEventListener('click', signOut);
 
 function signIn() {
-  firebase.auth().signInWithRedirect(provider)
+  firebase.auth().signInWithRedirect(provider);
 };
 
 function signOut() {
@@ -23,8 +22,9 @@ firebase.auth().onAuthStateChanged((user) => {
   userStore.user = user;
   if (user) {
     const API_PATH = `${user.uid}.json`;
-    todos.load(API_PATH)
-    .then(() => todoList.render())
+    api.load(API_PATH)
+      .then((data) => api.compare(data))
+      .then(() => todoList.render())
   }
 })
 
