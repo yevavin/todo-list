@@ -4,6 +4,7 @@ import todoListFooter from './todo-list-footer.js';
 import { getStateValue } from '../models/state.js';
 import getItem from './todo-list-item.js';
 import api from '../api.js';
+import userStore from '../models/user.js';
 
 const todoList = document.querySelector('#todoList');
 
@@ -72,29 +73,38 @@ todoList.render = function () {
 };
 
 todoList.addItem = (itemValue) => {
-  api.add(...todos.addTodo(itemValue))
+  userStore.user
+    ? api.add(...todos.addTodo(itemValue))
+    : todos.addTodo(itemValue)
   todoList.dispatchEvent(new Event('update'))
 }
 
 function removeItem(e) {
   const id = e.target.parentElement.id;
-  api.update(...todos.removeTodo(id))
+  userStore.user
+    ? api.update(...todos.removeTodo(id))
+    : todos.removeTodo(id)
   todoList.dispatchEvent(new Event('update'));
 };
 
 function compliteItem(e) {
   const id = e.target.parentElement.id;
-  api.update(...todos.toggle(id))
+  userStore.user
+    ? api.update(...todos.toggle(id))
+    : todos.toggle(id)
   todoList.dispatchEvent(new Event('update'));
 };
 
 todoList.checkContent = () => {
   const labelForEmptyList = document.querySelector('#labelForEmptyList')
-  if (todos.length == 0) {
-    labelForEmptyList.classList.remove('hidden');
-  } else {
-    labelForEmptyList.classList.add('hidden');
-  }
+  let todosLength = 0
+  Object.values(todos.data)
+    .forEach(todo => {
+      !todo.deleted && todosLength++
+    })
+  todosLength == 0
+    ? labelForEmptyList.classList.remove('hidden')
+    : labelForEmptyList.classList.add('hidden');
 }
 
 todoList.checkContent();

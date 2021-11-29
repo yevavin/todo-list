@@ -6,6 +6,7 @@
 @import "../components/_todo-list.scss";
 @import "../components/_todo-list-footer.scss";
 @import "../components/_popup.scss";
+@import "../components/_todo-list-popup.scss";
 
 *,
 *::after,
@@ -13,6 +14,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
 .light {

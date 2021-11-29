@@ -53,7 +53,11 @@
     <div id="labelForEmptyList">Add your first todo</div>
   </div>
 
+  <!-- Popups -->
+
   <div class="popup-wrapper hidden">
+
+    <!-- Sign in popup -->
     <div class="popup hidden" id="signIn">
       <img src="./images/x.svg" class="close-btn" alt="close">
       <div class="popup__title">
@@ -70,6 +74,7 @@
       </div>
     </div>
 
+    <!-- Log out popup -->
     <div class="popup hidden" id="signOut">
       <img src="./images/x.svg" class="close-btn" alt="close">
       <div class="popup__title">
@@ -78,8 +83,18 @@
       <div class="popup__content">
         <button class="btn" id="signOutWithGoogle">
           <ion-icon name="logo-google"></ion-icon>
-          <span>Sign out</span>
+          <span>Log out</span>
         </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Item info popup -->
+  <div class="item-info__popup-wrapper popup-wrapper hidden">
+    <div class="item-info__popup hidden" id="itemInfoPopup">
+      <img src="./images/x.svg" class="close-btn" alt="close">
+      <div class="popup__content">
       </div>
     </div>
   </div>

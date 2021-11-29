@@ -5,7 +5,7 @@
     height: 48px;
     padding: 19px 35px 19px 45px;
     font-family: inherit;
-    font-size: 12px;
+    font-size: 16px;
     border-radius: 5px;
     outline: none;
     border: none;
@@ -16,7 +16,7 @@
     }
 
     &::placeholder {
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 
@@ -67,7 +67,6 @@
     .input {
       height: 64px;
       padding: 23px 35px 23px 73px;
-      font-size: 16px;
   
       &::placeholder {
         font-size: 16px;

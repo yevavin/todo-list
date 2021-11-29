@@ -21,8 +21,7 @@ function signOut() {
 firebase.auth().onAuthStateChanged((user) => {
   userStore.user = user;
   if (user) {
-    const API_PATH = `${user.uid}.json`;
-    api.load(API_PATH)
+    api.load()
       .then((data) => api.compare(data))
       .then(() => todoList.render())
   }
